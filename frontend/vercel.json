@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/langgraph/:path*",
+      "destination": "https://shade-adequate-gather-filters.trycloudflare.com/api/langgraph/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://shade-adequate-gather-filters.trycloudflare.com/api/:path*"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{{- if .Values.redis.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "omni-harness.redisFullname" . }}
+  namespace: {{ include "omni-harness.namespace" . }}
+  labels:
+    {{- include "omni-harness.labels" . | nindent 4 }}
+    app.kubernetes.io/component: redis
+spec:
+  type: ClusterIP
+  ports:
+    - name: tcp-redis
+      port: 6379
+      targetPort: tcp-redis
+  selector:
+    {{- include "omni-harness.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: redis
+{{- end -}}
